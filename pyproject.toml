@@ -1,0 +1,40 @@
+[project]
+name = "pyquant-live"
+version = "0.1.0"
+description = "Small live systematic trading system in Python: asyncio + Redis Streams + SQLite OMS"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy>=2.0", "pandas>=2.2", "polars>=1.0", "redis>=5.0", "hiredis>=3.0", "aiohttp>=3.9",
+  "websockets>=12", "orjson>=3.9", "prometheus-client>=0.20",
+]
+
+[project.optional-dependencies]
+fast = ["numba>=0.60", "uvloop>=0.19"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "pytest-cov>=5", "hypothesis>=6", "mypy>=1.10",
+       "ruff>=0.5", "pandas-stubs", "numba>=0.60", "uvloop>=0.19"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["pyquant"]
+omit = ["pyquant/md.py"]  # live websocket + replay CLI: exercised by bench/, not unit tests
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+packages = ["pyquant"]
+
+[[tool.mypy.overrides]]
+module = ["numba", "numba.*", "uvloop", "websockets", "pyarrow.*"]
+ignore_missing_imports = true

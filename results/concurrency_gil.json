@@ -1,0 +1,21 @@
+{
+  "python": "3.13.16",
+  "build": "gil",
+  "gil_enabled_at_runtime": true,
+  "cpus": 4,
+  "workers": 4,
+  "pure_python_s": {
+    "sequential": 0.8543180120000216,
+    "asyncio_gather": 0.8386066250000113,
+    "threads": 0.8138675219997822,
+    "asyncio_to_thread": 0.8415429189999486,
+    "processes": 0.3199957719998565
+  },
+  "numpy_s": {
+    "sequential": 0.9831253840002319,
+    "asyncio_gather": 0.9993178400000033,
+    "threads": 0.7319241410000359,
+    "asyncio_to_thread": 0.7374332990002586,
+    "processes": 0.7228543320002245
+  }
+}

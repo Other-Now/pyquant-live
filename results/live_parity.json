@@ -1,0 +1,10 @@
+{
+  "ticks": 5609,
+  "backtest_orders": 15,
+  "live_orders": 15,
+  "identical": true,
+  "first_last_price": [
+    73540.0,
+    73612.23
+  ]
+}

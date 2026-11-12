@@ -1,0 +1,48 @@
+{
+  "params": {
+    "window": 300,
+    "entry": 2.5,
+    "exit": 0.5,
+    "lot": 0.001
+  },
+  "rows": 1106978,
+  "polars": {
+    "load_s": 0.1665124310002284,
+    "signal_s": 0.21660085200028334,
+    "pnl_s": 0.02846866299978501,
+    "total_s": 0.41158194600029674,
+    "rows_per_s": 2689568.895714395,
+    "signal_rows_per_s": 5110681.6514209835
+  },
+  "pandas": {
+    "load_s": 0.22836876600013056,
+    "signal_s": 0.11567637699999977,
+    "pnl_s": 0.02892952399997739,
+    "total_s": 0.37297466700010773,
+    "rows_per_s": 2967971.01235747,
+    "signal_rows_per_s": 9569611.60704404
+  },
+  "event_class": {
+    "signal_s": 1.3746024349998152,
+    "signal_rows_per_s": 805307.7543109029
+  },
+  "parity": {
+    "polars_vs_event_mismatch_ticks": 0,
+    "pandas_vs_event_mismatch_ticks": 0,
+    "target_changes": 2190
+  },
+  "pnl_usdt_1lot_0.001btc": {
+    "polars": {
+      "gross": -20.34541999999947,
+      "fees": 17.828627388,
+      "net": -38.17404738799947,
+      "trades": 2190
+    },
+    "pandas": {
+      "gross": -20.34541999999947,
+      "fees": 17.828627388,
+      "net": -38.17404738799947,
+      "trades": 2190
+    }
+  }
+}

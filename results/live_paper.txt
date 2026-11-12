@@ -1,0 +1,26 @@
+# live paper run 2026-11-12T08:54:31Z, 600s, BTCUSDT public trade stream
+## md
+{'published': 5609}
+## trader
+start cursor=0-0 rebuilt=0 reconcile={'confirmed': 0, 'resent': 0, 'mismatch': 0} pos=0
+{'ticks': 5609, 'orders': 15, 'pos': 1, 'lat_p50_us': 373.147, 'lat_p99_us': 3719.125, 'recv_p50_us': 362.453, 'recv_p99_us': 3673.221, 'commit_p50_us': 31.644, 'lat_n': 5609}
+## metrics (scraped at end)
+pq_ticks_total 5609.0
+pq_ticks_created 1.794473017286283e+09
+pq_orders_total{dup="False"} 15.0
+pq_orders_created{dup="False"} 1.7944730965723329e+09
+pq_tick_to_decision_seconds_bucket{le="5e-05"} 0.0
+pq_tick_to_decision_seconds_bucket{le="0.0001"} 0.0
+pq_tick_to_decision_seconds_bucket{le="0.0002"} 131.0
+pq_tick_to_decision_seconds_bucket{le="0.0005"} 3487.0
+pq_tick_to_decision_seconds_bucket{le="0.001"} 4717.0
+pq_tick_to_decision_seconds_bucket{le="0.002"} 5430.0
+pq_tick_to_decision_seconds_bucket{le="0.005"} 5577.0
+pq_tick_to_decision_seconds_bucket{le="0.01"} 5609.0
+pq_tick_to_decision_seconds_bucket{le="0.05"} 5609.0
+pq_tick_to_decision_seconds_bucket{le="+Inf"} 5609.0
+pq_tick_to_decision_seconds_count 5609.0
+pq_tick_to_decision_seconds_sum 3.5250316490000095
+pq_tick_to_decision_seconds_created 1.7944730172863512e+09
+pq_position_lots 1.0
+pq_reconcile_mismatch_lots 0.0

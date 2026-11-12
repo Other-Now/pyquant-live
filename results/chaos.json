@@ -1,0 +1,40 @@
+[
+  {
+    "mode": "safe",
+    "kills": 30,
+    "ref_orders": 2971,
+    "ref_seconds": 26.1,
+    "chaos_orders": 2971,
+    "lost": 0,
+    "dup": 0,
+    "changed": 0,
+    "ref_pos": -1,
+    "chaos_pos": -1,
+    "identical": true,
+    "reconcile_totals": {
+      "confirmed": 25,
+      "resent": 0,
+      "mismatch": 0
+    },
+    "starts": 31
+  },
+  {
+    "mode": "naive",
+    "kills": 30,
+    "ref_orders": 2971,
+    "ref_seconds": 27.8,
+    "chaos_orders": 2993,
+    "lost": 0,
+    "dup": 22,
+    "changed": 0,
+    "ref_pos": -1,
+    "chaos_pos": 5,
+    "identical": false,
+    "reconcile_totals": {
+      "confirmed": 0,
+      "resent": 0,
+      "mismatch": 0
+    },
+    "starts": 31
+  }
+]

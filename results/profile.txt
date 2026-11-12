@@ -1,0 +1,11 @@
+# scripts/profile.sh, 300k replayed ticks, mock exchange 0 ms, 581 orders each run (deterministic)
+# wall_s includes ~1 s interpreter start; buckets = py-spy samples (500 Hz) by stack membership
+0_baseline wall_s=13.18 {'ticks': 300000, 'orders': 581, 'pos': -1}
+  redis_client=88.9%  event_loop=4.6%  strategy=2.8%  other(import/startup)=2.4%  sqlite_store=1.2%
+1_poscache wall_s=10.62 {'ticks': 300000, 'orders': 581, 'pos': -1}
+  redis_client=89.4%  event_loop=4.1%  other(import/startup)=2.9%  strategy=2.6%  sqlite_store=1.0%
+2_hiredis wall_s=2.25 {'ticks': 300000, 'orders': 581, 'pos': -1}
+  redis_client=37.2%  event_loop=26.2%  strategy=15.6%  other(import/startup)=15.2%  sqlite_store=5.9%
+
+# earlier, before the risk clock fix (wall-clock rate limiter, 50/s): orders were 581 / 551 / 112
+# for the same ticks as the code got faster -> led to ADR 0003 (event-time risk).

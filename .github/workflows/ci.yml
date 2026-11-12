@@ -1,0 +1,40 @@
+name: ci
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    services:
+      redis:
+        image: redis:7
+        ports: ["6390:6379"]
+    env:
+      PQ_REDIS: redis://127.0.0.1:6390
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - run: pip install -e ".[dev]"
+      - run: bash scripts/get_data.sh
+      - name: lint
+        run: ruff check .
+      - name: types (mypy --strict)
+        run: mypy
+      - name: tests + coverage gate
+        run: pytest --cov --cov-fail-under=75 --cov-report=term
+      - name: kill -9 chaos (safe vs naive)
+        run: |
+          python -m pyquant.exchange --port 8090 & sleep 2
+          python -m pyquant.md replay --limit 100000 --fresh
+          python -m bench.chaos --kills 10 --out results/ci_chaos.json
+          python - <<'PY'
+          import json
+          safe, naive = json.load(open("results/ci_chaos.json"))
+          print(safe, naive, sep="\n")
+          assert safe["lost"] == 0 and safe["dup"] == 0 and safe["identical"], safe
+          PY
+      - name: hot-path + data-processing benchmarks
+        run: |
+          python -m bench.hotpath --n 100000 --out results/ci_hotpath.json
+          python -m bench.dataproc --out results/ci_dataproc.json
+      - uses: actions/upload-artifact@v4
+        with: { name: ci-results, path: results/ci_*.json }
